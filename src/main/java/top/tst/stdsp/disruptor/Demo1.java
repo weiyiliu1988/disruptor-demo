@@ -9,6 +9,7 @@ import java.util.concurrent.Future;
 
 import com.lmax.disruptor.BatchEventProcessor;
 import com.lmax.disruptor.EventFactory;
+import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.SequenceBarrier;
 import com.lmax.disruptor.YieldingWaitStrategy;
@@ -39,9 +40,12 @@ public class Demo1 {
 		// 创建SequenceBarrier
 		SequenceBarrier sequenceBarrier = ringBuffer.newBarrier();
 
+		// 注意EventHandler!!!!!!!!!!!!!
+		EventHandler<TradeTransaction> eventHandler = new TradeTransactionInDBHandler();
+
 		// 创建消息处理器(消费者)
 		BatchEventProcessor<TradeTransaction> transProcessor = new BatchEventProcessor<TradeTransaction>(ringBuffer,
-				sequenceBarrier, new TradeTransactionInDBHandler());
+				sequenceBarrier, eventHandler);
 
 		// ringBuffer根据消费者状态
 		ringBuffer.addGatingSequences(transProcessor.getSequence());

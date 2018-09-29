@@ -40,7 +40,8 @@ public class Demo2 {
 		RingBuffer<TradeTransaction> ringBuffer = RingBuffer.createSingleProducer(eventFactory, BUFFER_SIZE);
 
 		// 多生产者
-		//RingBuffer<TradeTransaction> ringBuffer2 = RingBuffer.createMultiProducer(eventFactory, BUFFER_SIZE);
+		// RingBuffer<TradeTransaction> ringBuffer2 =
+		// RingBuffer.createMultiProducer(eventFactory, BUFFER_SIZE);
 
 		SequenceBarrier sequenceBarrier = ringBuffer.newBarrier();
 
@@ -52,7 +53,7 @@ public class Demo2 {
 
 		workerPool.start(executor);
 
-		for (int i = 0; i < 10500; i++) {
+		for (int i = 0; i < 100; i++) {
 			long seq = ringBuffer.next();
 			ringBuffer.get(seq).setPrice(i);
 			ringBuffer.publish(seq);
