@@ -9,7 +9,7 @@ public class TradeTransactionJMSNotifyHandler implements EventHandler<TradeTrans
 	@Override
 	public void onEvent(TradeTransaction event, long sequence, boolean endOfBatch) throws Exception {
 		// do send jms message
-
+		System.out.println("Demo3 EventHandler!");
 	}
 
 }

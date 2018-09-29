@@ -1,6 +1,5 @@
 package top.tst.stdsp.disruptor;
 
-import java.util.HashMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -17,9 +16,7 @@ import com.lmax.disruptor.YieldingWaitStrategy;
 import top.tst.stdsp.disruptor.bean.TradeTransaction;
 import top.tst.stdsp.disruptor.handler.TradeTransactionInDBHandler;
 
-public class Demo1 {
-
-	private String id = "test1";
+public class Demo1EventHandler {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 

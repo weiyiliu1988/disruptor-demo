@@ -19,7 +19,7 @@ import top.tst.stdsp.disruptor.handler.TradeTransactionInDBHandler;
  * @author Liuweiyi
  *
  */
-public class Demo2 {
+public class Demo2WorkHandler {
 
 	public static void main(String[] args) throws InterruptedException {
 		int BUFFER_SIZE = 1024;
