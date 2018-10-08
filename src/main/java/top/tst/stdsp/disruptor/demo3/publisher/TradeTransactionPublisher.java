@@ -12,7 +12,7 @@ public class TradeTransactionPublisher implements Runnable {
 	Disruptor<TradeTransaction> disruptor;
 	private CountDownLatch latch;
 
-	private static int LOOP = 10_000_000;
+	private static int LOOP = 1_000;
 
 	public TradeTransactionPublisher(CountDownLatch latch, Disruptor<TradeTransaction> disruptor) {
 		this.disruptor = disruptor;
@@ -23,8 +23,11 @@ public class TradeTransactionPublisher implements Runnable {
 	public void run() {
 		TradeTransactionEventTranslator tradeTranslator = new TradeTransactionEventTranslator();
 		for (int i = 0; i < LOOP; i++) {
+
 			disruptor.publishEvent(tradeTranslator);
+			System.out.println("-------------publishEvent------1------");
 		}
+		//
 		latch.countDown();
 
 	}

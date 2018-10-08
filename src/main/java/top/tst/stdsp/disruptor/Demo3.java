@@ -41,7 +41,8 @@ public class Demo3 {
 				return new Thread(r);
 			}
 
-		}, ProducerType.SINGLE, new BusySpinWaitStrategy());
+			// }, ProducerType.MULTI, new BusySpinWaitStrategy());// 总耗时138ms 速度较快
+		}, ProducerType.SINGLE, new BusySpinWaitStrategy());// 总耗时170ms
 
 		// 利用disruptor创建消费者组C1,C2
 
@@ -65,6 +66,6 @@ public class Demo3 {
 		disruptor.shutdown();
 		executor.shutdown();
 
-		System.out.println("总耗时:" + (System.currentTimeMillis() - beginTime));
+		System.out.println("总耗时:" + (System.currentTimeMillis() - beginTime));// 176ms
 	}
 }
