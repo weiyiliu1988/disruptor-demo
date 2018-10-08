@@ -24,6 +24,7 @@ public class TradeTransactionPublisher implements Runnable {
 		TradeTransactionEventTranslator tradeTranslator = new TradeTransactionEventTranslator();
 		for (int i = 0; i < LOOP; i++) {
 
+			// 执行逻辑启动
 			disruptor.publishEvent(tradeTranslator);
 			System.out.println("-------------publishEvent------1------");
 		}
